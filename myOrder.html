@@ -1,0 +1,379 @@
+<!-- datapiker -->
+<link rel="stylesheet" href="/dist/css/datepicker/datepicker.css">
+<div class="container-fluid">
+    <h4 class="pageHeader my-4">我的订单</h4>
+    <div class="card shadow">
+        <div class="card-body">
+            <div id="card_box" class="content mb-3 w-100 mr-0 ml-0">
+                <div class="col-12 mb-3 ">
+                    <div class="col-lg-4 col-md-8  col-sm-12 col-xs-12 my-2 px-0 ml-2">
+                        <div class="p20">
+                            <div class=" J-datepickerTime-range d-flex ">
+                                <div class="col-6 px-4">
+                                    <input placeholder="开始日期" name="" class="start-time form-control" value="">
+                                </div>
+                                <div class="col-6 px-4">
+                                    <input placeholder="结束日期" name="" class="end-time form-control " value="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3  col-sm-6 col-xs-12">
+                        <div class="dropdown  p-0 mx-2  my-2">
+                            <select id="sid" class="form-control " style="color: '#7f7f7f'">
+                <option>请选择状态</option>
+                <option>等支付</option>
+                <option>等发货</option>
+                <option>等收货</option>
+                <option>已完成</option>
+              </select>
+                        </div>
+                    </div>
+                    <button type="button" onclick="searchProduct()" class="btn bg-primary px-4 mx-2 my-2">搜索</button>
+                </div>
+            </div>
+            <table id="table" class="table-striped " data-thead-classes="thead-light" data-virtual-scroll="false" data-virtual-scroll-item-height="100" sortable="false">
+            </table>
+        </div>
+    </div>
+
+
+</div>
+
+<!-- datapiker -->
+<script src="dist/js/datepicker/moment.min.js"></script>
+<script src="dist/js/datepicker/datepicker.all.min.js"></script>
+<script src="dist/js/datepicker/datepicker.en.js"></script>
+<script>
+    var geeku = {
+        tableData: [{
+            "ID": 1,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 3000,
+            "state": "等支付",
+            "option": '查看'
+        }, {
+            "ID": 2,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 4000,
+            "state": "等支付",
+            "option": '查看 取消'
+        }, {
+            "ID": 3,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 4000,
+            "state": "等支付",
+            "option": '查看 取消'
+        }, {
+            "ID": 4,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 4000,
+            "state": "等支付",
+            "option": '查看 取消'
+        }, {
+            "ID": 5,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 4000,
+            "state": "等支付",
+            "option": '查看 取消'
+        }, {
+            "ID": 6,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 4000,
+            "state": "等支付",
+            "option": '查看 取消'
+        }, {
+            "ID": 1,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 3000,
+            "state": "等支付",
+            "option": '查看'
+        }, {
+            "ID": 2,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 4000,
+            "state": "等支付",
+            "option": '查看 取消'
+        }, {
+            "ID": 3,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 4000,
+            "state": "等支付",
+            "option": '查看 取消'
+        }, {
+            "ID": 4,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 4000,
+            "state": "等支付",
+            "option": '查看 取消'
+        }, {
+            "ID": 5,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 4000,
+            "state": "等支付",
+            "option": '查看 取消'
+        }, {
+            "ID": 6,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 4000,
+            "state": "等支付",
+            "option": '查看 取消'
+        }, {
+            "ID": 1,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 3000,
+            "state": "等支付",
+            "option": '查看'
+        }, {
+            "ID": 2,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 4000,
+            "state": "等支付",
+            "option": '查看 取消'
+        }, {
+            "ID": 3,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 4000,
+            "state": "等支付",
+            "option": '查看 取消'
+        }, {
+            "ID": 4,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 4000,
+            "state": "等支付",
+            "option": '查看 取消'
+        }, {
+            "ID": 5,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 4000,
+            "state": "等支付",
+            "option": '查看 取消'
+        }, {
+            "ID": 6,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 4000,
+            "state": "等支付",
+            "option": '查看 取消'
+        }, {
+            "ID": 1,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 3000,
+            "state": "等支付",
+            "option": '查看'
+        }, {
+            "ID": 2,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 4000,
+            "state": "等支付",
+            "option": '查看 取消'
+        }, {
+            "ID": 3,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 4000,
+            "state": "等支付",
+            "option": '查看 取消'
+        }, {
+            "ID": 4,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 4000,
+            "state": "等支付",
+            "option": '查看 取消'
+        }, {
+            "ID": 5,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 4000,
+            "state": "等支付",
+            "option": '查看 取消'
+        }, {
+            "ID": 6,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 4000,
+            "state": "等支付",
+            "option": '查看 取消'
+        }, {
+            "ID": 1,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 3000,
+            "state": "等支付",
+            "option": '查看'
+        }, {
+            "ID": 2,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 4000,
+            "state": "等支付",
+            "option": '查看 取消'
+        }, {
+            "ID": 3,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 4000,
+            "state": "等支付",
+            "option": '查看 取消'
+        }, {
+            "ID": 4,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 4000,
+            "state": "等支付",
+            "option": '查看 取消'
+        }, {
+            "ID": 5,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 4000,
+            "state": "等支付",
+            "option": '查看 取消'
+        }, {
+            "ID": 6,
+            "time": "2020-3-4 12:00",
+            "type": "寄存柜定制",
+            "product": '智能寄存柜',
+            "money": 4000,
+            "state": "等支付",
+            "option": '查看 取消'
+        }, ]
+    };
+
+    $(function() {
+        $(window).resize(function() {
+                $('#table').bootstrapTable('resetView', {
+                    height: tableHeight()
+                })
+            })
+            //日期选择器
+            // $("#searchStartTime").datepicker({
+            //     language: 'zh-CN'
+            // });
+            // 时间选择器
+        $('.J-datepickerTime-range').datePicker({
+            format: 'YYYY-MM-DD HH:mm',
+            isRange: true,
+            orientation: 'bottom'
+        });
+
+        $('#table').bootstrapTable({
+            data: geeku.tableData,
+            height: tableHeight(), //高度调整
+            search: false, //是否搜索
+            searchOnEnterKey: false, //回车搜索
+            pagination: true, //是否分页
+            pageSize: 15, //单页记录数
+            pageList: [10, 25, 50, 100], //分页步进值
+            sortable: true,
+            // sidePagination: "server", //服务端分页
+            // contentType: "application/x-www-form-urlencoded", //请求数据内容格式 默认是 application/json 自己根据格式自行服务端处理
+            // dataType: "json", //期待返回数据类型
+            // method: "post", //请求方式
+            searchAlign: "left", //查询框对齐方式
+            queryParamsType: "limit", //查询参数组织方式
+            queryParams: function getParams(params) {
+                //params obj
+                params.other = "otherInfo";
+                return params;
+            },
+
+            // showRefresh: true, //刷新按钮
+            // showColumns: true, //列选择按钮
+            // buttonsAlign: "left", //按钮对齐方式
+            // toolbar: "#toolbar", //指定工具栏
+            toolbarAlign: "right", //工具栏对齐方式
+            // showPaginationSwitch: true,
+            columns: [{
+                title: '订单ID',
+                field: 'ID',
+                align: 'center',
+                // width: 100,
+                valign: 'middle'
+            }, {
+                title: '下单时间',
+                field: 'time',
+                align: 'center',
+                valign: 'middle'
+            }, {
+                title: '定制类型',
+                field: 'type',
+                align: 'center',
+                valign: 'middle'
+            }, {
+                title: '定制产品',
+                field: 'product',
+                align: 'center',
+                valign: 'middle'
+            }, {
+                title: '订单金额',
+                field: 'money',
+                align: 'center',
+                valign: 'middle'
+            }, {
+                title: '订单状态',
+                field: 'state',
+                align: 'center',
+                valign: 'middle'
+            }, {
+                title: '操作',
+                field: 'option',
+                align: 'center',
+                valign: 'middle'
+            }],
+        });
+
+        function tableHeight() {
+            return $(window).height() - 200;
+        }
+    })
+</script>

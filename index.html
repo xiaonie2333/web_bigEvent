@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>极酷物联平台</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- VENDOR CSS -->
+    <!-- VENDOR CSS -->
+    <link rel="stylesheet" href="dist/css/login/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="dist/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="dist/css/toastr.min.css">
+    <link rel="stylesheet" href="dist/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="dist/css/ionicons.min.css">
+    <link href="dist/css/bootstrap.css" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <!-- bootStrap-table -->
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="/dist/css/base.css">
+
+
+    <style>
+        .nav-item .active {
+            border-bottom: 0.2rem solid #2e84f3;
+            background-color: #fff;
+            color: #2e84f3;
+        }
+        
+        .btn:focus,
+        .btn:active:focus {
+            outline: none;
+        }
+        /* 顶部选择菜单样式 */
+        
+        .nav-pills .nav-link.active,
+        .nav-pills .show>.nav-link {
+            border-bottom: 2px solid #007bff;
+            color: #007bff;
+            background: #fff;
+        }
+        
+        .nav-pills.flex-column.nav-pills-no-bd .nav-link {
+            border: 0 !important;
+            border-radius: 5px !important;
+            background: rgba(222, 222, 222, .4);
+            margin-top: 10px;
+            margin-bottom: 10px;
+            text-align: center;
+            padding: 10px 0;
+            border-bottom: 0px solid rgba(0, 0, 0, .125);
+        }
+        
+        .nav-pills.nav-secondary .nav-link.active {
+            background: #007bff;
+            border: 1px solid #007bff;
+            color: #fff;
+            text-align: center;
+        }
+        
+        .text-999 {
+            color: #999
+        }
+        
+        hr {
+            margin: 10px;
+        }
+        
+        .ml-20 {
+            margin-left: 20px;
+        }
+        
+        .shadow {
+            /* box-shadow: 0 .15rem 1.75rem 0 rgba(58, 59, 69, .15) !important; */
+            box-shadow: 0 .2rem 0.7rem rgba(0, 0, 0, .15) !important
+        }
+        
+        .cursor-in {
+            cursor: pointer;
+        }
+        /* 当不显示菜单的时候 */
+        
+        @media (min-width: 768px) {
+            body:not(.sidebar-mini-md) .content-wrapper,
+            body:not(.sidebar-mini-md) .main-footer,
+            body:not(.sidebar-mini-md) .main-header {
+                transition: margin-left .3s ease-in-out;
+                margin-left: 0px;
+            }
+        }
+        
+        .card .nav.flex-column>li {
+            border-bottom: 0px solid rgba(0, 0, 0, .125);
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        <!-- 顶部导航-->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light shadow mb-0 pb-4">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav d-flex justify-content-between align-items-center w-100 px-2 ">
+                <li id="menuIcon" class="nav-item active  float-right  " style="display: none;">
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+                </li>
+                <li id="backBtn" class="nav-item d-sm-inline-block  float-left">
+                    <a href="/index.html" class="nav-link text-primary font-weight-bold ">返回</a>
+                </li>
+                <li id="signOutBtn" class="nav-item" style="display:none" onclick="geeku.signOut()">
+                    <button class="btn bg-primary mt-3 mr-3">退出登录</button>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- 侧边菜单-->
+        <aside class="main-sidebar sidebar-dark-primary elevation-4" style="display: none;">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex align-items-center pl-1">
+                    <div class="image">
+                        <img src="dist/img/logo_geeku.png" class="img-circle elevation-2" alt="User Image">
+                    </div>
+                    <h4 class="info">
+                        <a href="#" class="d-block font-weight-bold">极酷定制中心</a>
+                    </h4>
+                </div>
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <li class="nav-item active">
+                            <a href="#" class="nav-link py-4">
+                                <i class="far fa-file-word-o nav-icon"></i>
+                                <p>在线定制和报价</p>
+                            </a>
+                        </li>
+                        <li class="nav-item" onclick="geeku.initOrder(this);">
+                            <a href="#" class="nav-link  py-4">
+                                <i class="far  fa-file-text nav-icon"></i>
+                                <p>我的订单</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link  py-4">
+                                <i class="far fa-user nav-icon"></i>
+                                <p>基本信息</p>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </nav>
+            </div>
+            <!-- /.sidebar -->
+        </aside>
+
+        <!-- 中间内容区域-->
+        <div class="content-wrapper ">
+            <!-- Main content -->
+            <section class="mainContent">
+
+
+            </section>
+            <!-- /.content -->
+        </div>
+        <!-- /.content-wrapper -->
+        <footer class=" main-footer">
+            <div class="float-right d-none d-sm-block">
+                <b>Version</b> 3.0.5
+            </div>
+            <strong>Copyright &copy; 2014-2019 <a href="http://adminlte.io">AdminLTE.io</a>.</strong> All rights reserved.
+        </footer>
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+    </div>
+
+</body>
+<!-- AdminLTE App -->
+<script src="dist/js/jquery-3.1.1.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/sidebar/adminlte.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="dist/js/jquery-ui.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="dist/js/bootstrap.bundle.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="dist/js/jquery.overlayScrollbars.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://unpkg.com/bootstrap-table@1.15.3/dist/bootstrap-table.min.js"></script>
+<!-- Latest compiled and minified Locales -->
+<script src="https://unpkg.com/bootstrap-table@1.15.3/dist/locale/bootstrap-table-zh-CN.min.js"></script>
+<script src="dist/js/db.js"></script>
+
+
+
+<script>
+    var geeku = {
+        init() {
+            $(".mainContent").load("getPrice.html");
+        },
+    };
+    $(function() {
+        geeku.init();
+    })
+</script>
+
+
+</html>
